@@ -17,7 +17,7 @@ function App() {
 
     // New state for Detail View
     const [selectedArticle, setSelectedArticle] = useState(null);
-
+    //
     useEffect(() => {
         const loadNews = async () => {
             setLoading(true);

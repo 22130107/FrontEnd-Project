@@ -7,7 +7,6 @@ const Header = ({ currentCategory, onCategoryChange }) => {
 
     return (
         <div className="header-main">
-            {/* Top Bar */}
             <div className="top-bar">
                 <div className="container top-bar-content">
                     <span>{new Date().toLocaleDateString('vi-VN', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</span>
@@ -17,7 +16,6 @@ const Header = ({ currentCategory, onCategoryChange }) => {
 
             <header className="container">
                 <div className="header-content">
-                    {/* Logo */}
                     <div
                         className="logo"
                         onClick={() => onCategoryChange(CATEGORIES[0].id)}

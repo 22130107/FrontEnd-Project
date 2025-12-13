@@ -18,6 +18,10 @@ function App() {
     const [selectedArticle, setSelectedArticle] = useState(null);
     const [retryKey, setRetryKey] = useState(0);
 
+
+    // New state for Detail View
+    const [selectedArticle, setSelectedArticle] = useState(null);
+    //
     useEffect(() => {
         let mounted = true;
 

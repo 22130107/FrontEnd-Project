@@ -13,7 +13,6 @@ const Footer = ({ onCategoryChange }) => {
                             Trang tin tức tổng hợp nhanh chóng, chính xác và chuyên nghiệp nhất. Cập nhật liên tục 24/7.
                         </p>
                     </div>
-
                     <div>
                         <h4 className="footer-heading">Chuyên mục</h4>
                         <ul className="footer-links">

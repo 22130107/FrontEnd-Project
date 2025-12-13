@@ -52,11 +52,9 @@
     text-align: left;
     transition: color 0.2s;
 }
-
 .footer-link-btn:hover {
     color: white;
 }
-
 .footer-info p {
     color: #aaa;
     font-size: 0.9rem;

@@ -14,6 +14,7 @@ function App() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
+
     // New state for Detail View
     const [selectedArticle, setSelectedArticle] = useState(null);
 

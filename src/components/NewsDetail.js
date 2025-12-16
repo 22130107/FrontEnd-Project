@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
-import StateView from "./StateView";
-import { fetchFullArticle, parseArticleContent } from "../services/scraperService";
-import "./NewsDetail.css";
 
-const MAX_RETRY = 3;
+import React, { useEffect, useState } from 'react';
+import { fetchFullArticle, parseArticleContent } from '../services/scraperService';
+import './css/NewsDetail.css';
+
 
 const NewsDetail = ({ item, onBack }) => {
     const [fullContent, setFullContent] = useState(null);

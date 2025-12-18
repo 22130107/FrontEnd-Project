@@ -2,15 +2,35 @@ import React, { useState } from 'react';
 import { CATEGORIES } from '../services/rssService';
 import './Header.css';
 
-const Header = ({ currentCategory, onCategoryChange }) => {
+const Header = ({ currentCategory, onCategoryChange, lastUpdated }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     return (
         <div className="header-main">
             <div className="top-bar">
                 <div className="container top-bar-content">
-                    <span>{new Date().toLocaleDateString('vi-VN', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</span>
-                    <span>Hợp tác cùng Baotintuc.vn</span>
+                    <span>
+                        {new Date().toLocaleDateString('vi-VN', {
+                            weekday: 'long',
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric'
+                        })}
+                    </span>
+                    <span className="top-bar-right">
+                        <span>Hợp tác cùng Baotintuc.vn</span>
+
+                        {lastUpdated && (
+                            <span className="last-updated">
+                                · Cập nhật lúc{' '}
+                                {lastUpdated.toLocaleTimeString('vi-VN', {
+                                    hour: '2-digit',
+                                    minute: '2-digit'
+                                })}
+                                , {lastUpdated.toLocaleDateString('vi-VN')}
+                            </span>
+                        )}
+                    </span>
                 </div>
             </div>
 
@@ -25,7 +45,6 @@ const Header = ({ currentCategory, onCategoryChange }) => {
                         </h1>
                     </div>
 
-                    {/* Mobile Menu Icon */}
                     <button
                         className="mobile-menu-btn"
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -34,7 +53,6 @@ const Header = ({ currentCategory, onCategoryChange }) => {
                     </button>
                 </div>
 
-                {/* Navigation */}
                 <nav className="desktop-nav">
                     <ul className="nav-list">
                         {CATEGORIES.map((cat) => (
@@ -52,7 +70,6 @@ const Header = ({ currentCategory, onCategoryChange }) => {
                 </nav>
             </header>
 
-            {/* Mobile Nav Dropdown */}
             {isMenuOpen && (
                 <div className="mobile-dropdown">
                     {CATEGORIES.map((cat) => (

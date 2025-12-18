@@ -38,6 +38,16 @@
     font-family: 'Merriweather', serif;
     letter-spacing: -1px;
 }
+.top-bar-right {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.last-updated {
+    font-size: 0.8rem;
+    color: #666;
+}
 
 .logo-suffix {
     color: #222;

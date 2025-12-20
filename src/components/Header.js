@@ -1,50 +1,42 @@
 import React, { useState } from 'react';
 import { CATEGORIES } from '../services/rssService';
-import './Header.css';
+import './css/Header.css';
 
-const Header = ({ currentCategory, onCategoryChange, lastUpdated }) => {
+const Header = ({ currentCategory, onCategoryChange }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     return (
         <div className="header-main">
+            {/* Top Bar */}
             <div className="top-bar">
-                <div className="container top-bar-content">
-                    <span>
-                        {new Date().toLocaleDateString('vi-VN', {
-                            weekday: 'long',
-                            year: 'numeric',
-                            month: 'long',
-                            day: 'numeric'
-                        })}
+                <div className="top-bar-content">
+                    <span className="date-time">
+                        {new Date().toLocaleDateString('vi-VN', { weekday: 'long', day: '2-digit', month: '2-digit', year: 'numeric' })}
                     </span>
-                    <span className="top-bar-right">
-                        <span>Hợp tác cùng Baotintuc.vn</span>
-
-                        {lastUpdated && (
-                            <span className="last-updated">
-                                · Cập nhật lúc{' '}
-                                {lastUpdated.toLocaleTimeString('vi-VN', {
-                                    hour: '2-digit',
-                                    minute: '2-digit'
-                                })}
-                                , {lastUpdated.toLocaleDateString('vi-VN')}
-                            </span>
-                        )}
-                    </span>
+                    <div className="top-right-links">
+                        <a href="#">RSS</a>
+                        <a href="#">Liên hệ</a>
+                    </div>
                 </div>
             </div>
 
+            {/* Main Header with Logo and Search */}
             <header className="container">
                 <div className="header-content">
                     <div
                         className="logo"
                         onClick={() => onCategoryChange(CATEGORIES[0].id)}
+                        style={{ cursor: 'pointer' }}
                     >
-                        <h1>
-                            The News<span className="logo-suffix">Daily</span>
-                        </h1>
+                        <span className="logo-text">BAOTINTUC<span style={{ color: '#666', fontSize: '0.5em', display: 'block', letterSpacing: '2px', marginTop: '-5px' }}>TTXVN</span></span>
                     </div>
 
+                    <div className="header-search">
+                        <input type="text" placeholder="Tìm kiếm..." className="search-input" />
+                        <button className="search-btn">🔍</button>
+                    </div>
+
+                    {/* Mobile Menu Icon */}
                     <button
                         className="mobile-menu-btn"
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -52,24 +44,25 @@ const Header = ({ currentCategory, onCategoryChange, lastUpdated }) => {
                         ☰
                     </button>
                 </div>
-
-                <nav className="desktop-nav">
-                    <ul className="nav-list">
-                        {CATEGORIES.map((cat) => (
-                            <li key={cat.id}>
-                                <button
-                                    onClick={() => onCategoryChange(cat.id)}
-                                    className={`nav-item-btn ${currentCategory === cat.id ? 'active' : ''}`}
-                                >
-                                    {cat.name}
-                                    {currentCategory === cat.id && <div className="nav-indicator" />}
-                                </button>
-                            </li>
-                        ))}
-                    </ul>
-                </nav>
             </header>
 
+            {/* Red Navigation Bar */}
+            <nav className="desktop-nav">
+                <ul className="nav-list">
+                    {CATEGORIES.map((cat) => (
+                        <li key={cat.id}>
+                            <button
+                                onClick={() => onCategoryChange(cat.id)}
+                                className={`nav-item-btn ${currentCategory === cat.id ? 'active' : ''}`}
+                            >
+                                {cat.name}
+                            </button>
+                        </li>
+                    ))}
+                </ul>
+            </nav>
+
+            {/* Mobile Nav Dropdown */}
             {isMenuOpen && (
                 <div className="mobile-dropdown">
                     {CATEGORIES.map((cat) => (
